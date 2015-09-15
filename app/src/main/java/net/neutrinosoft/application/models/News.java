@@ -1,4 +1,4 @@
-package models;
+package net.neutrinosoft.application.models;
 
 /**
  * Created by Oleg Kasyanov on 9/15/2015.

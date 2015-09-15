@@ -1,37 +1,30 @@
 package net.neutrinosoft.application;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-import models.News;
+import net.neutrinosoft.application.models.News;
 
 /**
  * Created by Oleg Kasyanov on 9/15/2015.
  */
-public class NewsAdapter extends BaseAdapter {
+public class NewsAdapter extends ArrayAdapter<News> {
 
+    Context context;
     private List<News> newsList;
 
-    @Override
-    public int getCount() {
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
+    public NewsAdapter(Context context, int resource, List<News> objects) {
+        super(context, resource, objects);
+        this.context = context;
+        this.newsList = objects;
     }
 
     @Override
@@ -51,7 +44,8 @@ public class NewsAdapter extends BaseAdapter {
 
         News news = newsList.get(position);
         viewHolder.tvNews.setText(news.getDescription());
-        viewHolder.tvDescription.setText(news.getDescription().trim());
+        //установка изображения
+        return row;
     }
 
     class ViewHolder {
